@@ -4,8 +4,8 @@ function App() {
   const [contacts, setContacts] = useState([
     {
       id: 1,
-      name: 'parsa',
-      lastName: 'babaei',
+      name: 'mina',
+      lastName: 'alaei',
       age: 21,
       city: 'esfahan',
       email: 'nimai@example.com',
