@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import React from 'react';
 import { Link } from "react-router-dom";
+import Card from "../../components/card/card"
 
-function Home({contacts,setContacts}) {
+function Home({ contacts, setContacts }) {
 
   const [showDeleteMessage_state, setShowDeleteMessage_state] = useState('none');
   const [nowId, setnowId] = useState();
@@ -31,10 +32,10 @@ function Home({contacts,setContacts}) {
   function handle_favFilter(title) {
     setFav_filter(title);
   }
-  function showDetails(contact_id){
-    
+  function showDetails(contact_id) {
+
   }
-  
+
 
   return (
     <div>
@@ -56,24 +57,27 @@ function Home({contacts,setContacts}) {
           )))}
         </div>
         <div>
-          
+
         </div>
       </div>
-      {contacts.filter(filter_contacts => filter_contacts.name.toUpperCase().includes(searchBox.toUpperCase()) && (fav_filter === 'allContacts' ? true : filter_contacts.favorite === fav_filter)).map(contact => (
-        <div style={{ border: '1px solid black', margin: '5px', padding: '10px' }}>
-          <div style={{ width: '50px', height: '50px' }}>
-            <img alt='avatar' src={`https://avatars.dicebear.com/api/avataaars/:${contact.id}.svg`}></img>
+      <div>
+        {contacts.filter(filter_contacts => filter_contacts.name.toUpperCase().includes(searchBox.toUpperCase()) && (fav_filter === 'allContacts' ? true : filter_contacts.favorite === fav_filter)).map(contact => (
+          <div style={{ border: '1px solid black', margin: '5px', padding: '10px' }}>
+            <Card contact={contact}/>
+            <div style={{ width: '50px', height: '50px' }}>
+              <img alt='avatar' src={`https://avatars.dicebear.com/api/avataaars/:${contact.id}.svg`}></img>
+            </div>
+            <div>name : {contact.name}</div>
+            <div>lastName : {contact.lastName}</div>
+            <div>age : {contact.age}</div>
+            <div>email : {contact.email}</div>
+            <div>city : {contact.city}</div>
+            <div>favorite : {contact.favorite}</div>
+            <button onClick={() => showDeleteMessage(contact.id)}>delete</button>
+            <button onClick={() => showDetails(contact.id)}>contact deatils</button>
           </div>
-          <div>name : {contact.name}</div>
-          <div>lastName : {contact.lastName}</div>
-          <div>age : {contact.age}</div>
-          <div>email : {contact.email}</div>
-          <div>city : {contact.city}</div>
-          <div>favorite : {contact.favorite}</div>
-          <button onClick={() => showDeleteMessage(contact.id)}>delete</button>
-          <button onClick={() => showDetails(contact.id)}>contact deatils</button>
-        </div>
-      ))}
+        ))}
+      </div>
       <Link to={"/addContact"}>{"ADD TO CONTACTS"}</Link>
     </div>
   );
