@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React,{useState} from "react";
 
-const Add_contact = () => {
+const Add_contact = ({contacts,setContacts}) => {
     const [form, setForm] = useState({
         id: Math.floor(Math.random() * 1000),
         name: '',
@@ -11,12 +11,25 @@ const Add_contact = () => {
         favorite: 'favorite',
         city: ''
       })
+      const handleSubmit = e => {
+        e.preventDefault()
+        setContacts([...contacts, form])
+        setForm({
+          id: Math.floor(Math.random() * 1000),
+          name: '',
+          age: 0,
+          email: '',
+          number: '',
+          favorite: '',
+          country: ''
+        })
+      }
       const handleForm = e => {
         setForm({ ...form, [e.target.name]: e.target.value })
       }
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}> 
                 <label>name</label>
                 <input name={'name'} onChange={handleForm} value={form.name} />
                 <label>age</label>
@@ -36,7 +49,8 @@ const Add_contact = () => {
                     Submit
                 </button>
             </form>
-            <Link to={"/"}>{"مشاهده همه"}</Link>
+            <button><Link to={"/"}>{"MAIN PAGE"}</Link></button>
+            
         </div>
     )
 }

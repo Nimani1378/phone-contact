@@ -2,27 +2,7 @@ import { useState } from 'react'
 import React from 'react';
 import { Link } from "react-router-dom";
 
-function Home() {
-  const [contacts, setContacts] = useState([
-    {
-      id: 1,
-      name: 'mina',
-      lastName: 'alaei',
-      age: 21,
-      city: 'esfahan',
-      email: 'nimai@example.com',
-      favorite: 'favorite'
-    },
-    {
-      id: 2,
-      name: 'nima',
-      lastName: 'rezaei',
-      age: 21,
-      city: 'tehran',
-      email: 'rezaei@example.com',
-      favorite: 'unFavorite'
-    }
-  ])
+function Home({contacts,setContacts}) {
 
   const [showDeleteMessage_state, setShowDeleteMessage_state] = useState('none');
   const [nowId, setnowId] = useState();
@@ -33,15 +13,6 @@ function Home() {
     { id: 2, title: 'favorite' },
     { id: 3, title: 'unFavorite' }
   ]
-  const [form, setForm] = useState({
-    id: Math.floor(Math.random() * 1000),
-    name: '',
-    age: 0,
-    email: '',
-    lastName: '',
-    favorite: 'favorite',
-    city: ''
-  })
 
   function showDeleteMessage(id) {
     setShowDeleteMessage_state('block');
@@ -60,20 +31,10 @@ function Home() {
   function handle_favFilter(title) {
     setFav_filter(title);
   }
-  
-  const handleSubmit = e => {
-    e.preventDefault()
-    setContacts([...contacts, form])
-    setForm({
-      id: Math.floor(Math.random() * 1000),
-      name: '',
-      age: 0,
-      email: '',
-      number: '',
-      favorite: '',
-      country: ''
-    })
+  function showDetails(contact_id){
+    
   }
+  
 
   return (
     <div>
@@ -110,9 +71,10 @@ function Home() {
           <div>city : {contact.city}</div>
           <div>favorite : {contact.favorite}</div>
           <button onClick={() => showDeleteMessage(contact.id)}>delete</button>
+          <button onClick={() => showDetails(contact.id)}>contact deatils</button>
         </div>
       ))}
-      <Link to={"/addContact"}>{"مشاهده همه"}</Link>
+      <Link to={"/addContact"}>{"ADD TO CONTACTS"}</Link>
     </div>
   );
 }
