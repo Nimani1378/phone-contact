@@ -3,13 +3,12 @@ import { Routes, Route, useParams } from 'react-router-dom';
 
 const Single_contact = ({contacts}) => {
     const {contactID} = useParams();
-    const [contact,setContact] = useState();
+    const [contact,setContact] = useState({});
     useEffect( () => {
-        async function set_contact(){await setContact(contacts.filter((contact)=>contact.id==contactID));}
-        set_contact();
+        setContact(contacts.filter((item)=>item.id==contactID)[0]);
       },[]);
     return(
-        <div>salam </div>
+        <div>salam {contact.name}</div>
     )
 }
 export default Single_contact;
