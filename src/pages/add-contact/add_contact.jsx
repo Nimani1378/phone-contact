@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React,{useState} from "react";
+import './addContact_style.css'
 
 const Add_contact = ({contacts,setContacts}) => {
     const [form, setForm] = useState({
@@ -28,7 +29,7 @@ const Add_contact = ({contacts,setContacts}) => {
         setForm({ ...form, [e.target.name]: e.target.value })
       }
     return (
-        <div>
+        <div className="addContact_body">
             <form onSubmit={handleSubmit}> 
                 <label>name</label>
                 <input name={'name'} onChange={handleForm} value={form.name} />

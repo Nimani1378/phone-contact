@@ -2,6 +2,7 @@ import { useState } from 'react'
 import React from 'react';
 import { Link } from "react-router-dom";
 import Card from "../../components/card/card"
+import "./index_style.css"
 
 function Home({ contacts, setContacts }) {
 
@@ -22,8 +23,8 @@ function Home({ contacts, setContacts }) {
   function hideDeleteMessage() {
     setShowDeleteMessage_state('none');
   }
-  function handleDelete() {
-    setContacts(contacts.filter(contact => contact.id !== nowId));
+  function handleDelete(id) {
+    setContacts(contacts.filter(contact => contact.id !== id));
     hideDeleteMessage();
   }
   const handleSearch = e => {
@@ -32,55 +33,58 @@ function Home({ contacts, setContacts }) {
   function handle_favFilter(title) {
     setFav_filter(title);
   }
-  function showDetails(contact_id) {
-    
+  function handleToggleFav(id) {
+    const newList = contacts.map((item) => {
+      if (item.id === id) {
+        const updatedItem = {
+          ...item,
+          favorite: item.favorite === "favorite" ? "unFavorite" : "favorite",
+        };
+
+        return updatedItem;
+      }
+
+      return item;
+    });
+
+    setContacts(newList);
   }
-
-
   return (
-    <div>
+    <div className='body'>
       <div style={{ padding: '10px' }}>
         <div style={{ display: showDeleteMessage_state }}>
           <div>Are you sure ?</div>
           <button onClick={handleDelete}>Yes</button>
           <button onClick={hideDeleteMessage}>No</button>
         </div>
-        <div>search : </div>
-        <div>
-          <input onChange={handleSearch} value={searchBox} />
-        </div>
-        <div>
+
+
+      </div>
+      <div className='container'>
+        <div className='filters_continer'>
           {(filter_buttons.map(button => (
-            <div>
-              <button onClick={() => handle_favFilter(button.title)} style={{ backgroundColor: button.title === fav_filter ? 'red' : 'white' }}>{button.title}</button>
-            </div>
+            <div className={'filter_buttons'} onClick={() => handle_favFilter(button.title)} style={{ borderBottom: button.title === fav_filter ? '2px solid red' : 'none' }}>{button.title}</div>
           )))}
         </div>
-        <div>
-
+        <div className='cards_container'>
+          {contacts.filter(filter_contacts => filter_contacts.name.toUpperCase().includes(searchBox.toUpperCase()) && (fav_filter === 'allContacts' ? true : filter_contacts.favorite === fav_filter)).map(contact => (
+            <Card contact={contact} handleDelete={handleDelete} handleToggleFav={handleToggleFav} />
+          ))}
+        </div>
+        <div className='list_options'>
+          <div>
+            <span>
+              <input onChange={handleSearch} value={searchBox} placeholder={'SEARCH'} style={{ border: 'none', borderRadius: "10px", padding: "8px", fontSize: "10px" }} />
+            </span>
+          </div>
+            <Link to={"/addContact"}>
+              <span style={{ color: 'white', padding: '15px' }} class="material-symbols-outlined">
+                person_add
+              </span>
+            </Link>
         </div>
       </div>
-      <div>
-        {contacts.filter(filter_contacts => filter_contacts.name.toUpperCase().includes(searchBox.toUpperCase()) && (fav_filter === 'allContacts' ? true : filter_contacts.favorite === fav_filter)).map(contact => (
-          <div style={{ border: '1px solid black', margin: '5px', padding: '10px' }}>
-            <Card contact={contact} showDeleteMessage={showDeleteMessage}/>
-            <div style={{ width: '50px', height: '50px' }}>
-              
-              <img alt='avatar' src={`https://avatars.dicebear.com/api/avataaars/:${contact.id}.svg`}></img>
-              
-            </div>
-            <div>name : {contact.name}</div>
-            <div>lastName : {contact.lastName}</div>
-            <div>age : {contact.age}</div>
-            <div>email : {contact.email}</div>
-            <div>city : {contact.city}</div>
-            <div>favorite : {contact.favorite}</div>
-            <button onClick={() => showDeleteMessage(contact.id)}>delete</button>
-            <div><Link to={`/contact/${contact.id}`}>contact deatils</Link></div>
-          </div>
-        ))}
-      </div>
-      <Link to={"/addContact"}>{"ADD TO CONTACTS"}</Link>
+
     </div>
   );
 }

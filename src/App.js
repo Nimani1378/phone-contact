@@ -25,7 +25,25 @@ function App() {
       city: 'tehran',
       email: 'rezaei@example.com',
       favorite: 'unFavorite'
-    }
+    },
+    {
+      id: 3,
+      name: 'nima',
+      lastName: 'rezaei',
+      age: 21,
+      city: 'tehran',
+      email: 'rezaei@example.com',
+      favorite: 'unFavorite'
+    },
+    {
+      id: 4,
+      name: 'nima',
+      lastName: 'rezaei',
+      age: 21,
+      city: 'tehran',
+      email: 'rezaei@example.com',
+      favorite: 'unFavorite'
+    },
   ])
   const router = createBrowserRouter([
     {
