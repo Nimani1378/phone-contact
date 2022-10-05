@@ -2,7 +2,7 @@ import "./App.css";
 import React,{useState} from "react";
 import Home from "./pages/home/index.jsx";
 import Add_contact from "./pages/add-contact/add_contact.jsx"
-import Single_contact from "./components/single_contact"
+import Single_contact from "./pages/single-contact/single_contact"
 import { RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 

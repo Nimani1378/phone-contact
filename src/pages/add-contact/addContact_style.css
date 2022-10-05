@@ -1,3 +1,6 @@
+*{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .addContact_body{
     height: 100vh;
     width: 100%;
@@ -5,3 +8,58 @@
     justify-content: center;
     align-items: center;
 }
+.addContact_container{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 400px;
+    height:fit-content;
+    background-image: url('../../assets/images/pattern.jpg');
+    box-shadow: 0px 7px 9px 0px #0000005c;
+}
+.form{
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.grid-ds{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: stretch;
+    gap: 15px;
+}
+.AddContact_inputs{
+    color: white;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: transparent;
+    caret-color: white;
+}
+.AddContact_inputs::placeholder{
+    color: white;
+}
+.AddContact_inputs:focus{
+    outline: none;
+}
+input:focus::placeholder {
+    color: transparent;
+  }
+.full-wd{
+    width: 100%;
+}
+.fav_but{
+    color: white;
+    padding:10px;
+    background-Color:transparent;
+    display:flex;
+    align-items: center;
+    gap:5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+}
+

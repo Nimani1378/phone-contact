@@ -2,6 +2,7 @@ import { useState } from 'react'
 import React from 'react';
 import { Link } from "react-router-dom";
 import Card from "../../components/card/card"
+import '../../total.css'
 import "./index_style.css"
 
 function Home({ contacts, setContacts }) {
@@ -63,7 +64,7 @@ function Home({ contacts, setContacts }) {
       <div className='container'>
         <div className='filters_continer'>
           {(filter_buttons.map(button => (
-            <div className={'filter_buttons'} onClick={() => handle_favFilter(button.title)} style={{ borderBottom: button.title === fav_filter ? '2px solid red' : 'none' }}>{button.title}</div>
+            <div className={'filter_buttons'} onClick={() => handle_favFilter(button.title)} style={{ borderBottom: button.title === fav_filter ? '2px solid white' : 'none' }}>{button.title}</div>
           )))}
         </div>
         <div className='cards_container'>
