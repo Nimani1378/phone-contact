@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import '../../total.css'
 import './addContact_style.css'
 import AddContact_inputs from "../../components/addContact-inputs/inputs"
+import { useSelector, useDispatch } from 'react-redux'
+import { addContact} from '../../redux/contact.slice'
 
-const Add_contact = ({ contacts, setContacts }) => {
-  const key_array = ['name', 'lastName', 'age', 'city']
+const Add_contact = () => {
+  //const contacts = useSelector((state) => state.contact_key);
+  const dispatch = useDispatch();
+  const key_array = ['name', 'lastName', 'age', 'city'];
   const [form, setForm] = useState({
     id: Math.floor(Math.random() * 1000),
     name: '',
@@ -17,7 +21,7 @@ const Add_contact = ({ contacts, setContacts }) => {
   })
   const handleSubmit = e => {
     e.preventDefault();
-    setContacts([...contacts, form]);
+    dispatch(addContact(form))
     setForm({
       id: Math.floor(Math.random() * 1000),
       name: '',

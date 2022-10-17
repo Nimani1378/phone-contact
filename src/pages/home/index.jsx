@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import Card from "../../components/card/card"
 import '../../total.css'
 import "./index_style.css"
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteContact, toggleFavorite } from '../../redux/contact.slice'
 
-function Home({ contacts, setContacts }) {
-
-  const [showDeleteMessage_state, setShowDeleteMessage_state] = useState('none');
+function Home() {
+  const contacts = useSelector((state) => state.contact_key);
+  const dispatch = useDispatch();
   const [nowId, setnowId] = useState();
   const [searchBox, setSearchBox] = useState('');
   const [fav_filter, setFav_filter] = useState('allContacts');
@@ -17,50 +19,16 @@ function Home({ contacts, setContacts }) {
     { id: 3, title: 'unFavorite' }
   ]
 
-  function showDeleteMessage(id) {
-    setShowDeleteMessage_state('block');
-    setnowId(id);
-  }
-  function hideDeleteMessage() {
-    setShowDeleteMessage_state('none');
-  }
-  function handleDelete(id) {
-    setContacts(contacts.filter(contact => contact.id !== id));
-    hideDeleteMessage();
-  }
+  
   const handleSearch = e => {
     setSearchBox(e.target.value);
   }
   function handle_favFilter(title) {
     setFav_filter(title);
   }
-  function handleToggleFav(id) {
-    const newList = contacts.map((item) => {
-      if (item.id === id) {
-        const updatedItem = {
-          ...item,
-          favorite: item.favorite === "favorite" ? "unFavorite" : "favorite",
-        };
 
-        return updatedItem;
-      }
-
-      return item;
-    });
-
-    setContacts(newList);
-  }
   return (
     <div className='body'>
-      <div style={{ padding: '10px' }}>
-        <div style={{ display: showDeleteMessage_state }}>
-          <div>Are you sure ?</div>
-          <button onClick={handleDelete}>Yes</button>
-          <button onClick={hideDeleteMessage}>No</button>
-        </div>
-
-
-      </div>
       <div className='container'>
         <div className='filters_continer'>
           {(filter_buttons.map(button => (
@@ -69,7 +37,7 @@ function Home({ contacts, setContacts }) {
         </div>
         <div className='cards_container'>
           {contacts.filter(filter_contacts => filter_contacts.name.toUpperCase().includes(searchBox.toUpperCase()) && (fav_filter === 'allContacts' ? true : filter_contacts.favorite === fav_filter)).map(contact => (
-            <Card contact={contact} handleDelete={handleDelete} handleToggleFav={handleToggleFav} />
+            <Card contact={contact} toggleFavorite1={()=>dispatch(toggleFavorite(contact.id))} deleteContact1={()=>dispatch(deleteContact(contact))}/>
           ))}
         </div>
         <div className='list_options'>
@@ -91,3 +59,4 @@ function Home({ contacts, setContacts }) {
 }
 
 export default Home;
+// toggleFavorite1={dispatch(toggleFavorite(contact.id))} deleteContact1={dispatch(deleteContact(contact.id))}

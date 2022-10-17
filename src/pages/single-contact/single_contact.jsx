@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import '../../total.css';
 import './singleContact_style.css'
+import { useSelector} from 'react-redux'
 
-const Single_contact = ({ contacts }) => {
+const Single_contact = () => {
     const { contactID } = useParams();
+    const contacts = useSelector((state) => state.contact_key)
     const [contact, setContact] = useState({});
     useEffect(() => {
         setContact(contacts.filter((item) => item.id == contactID)[0]);

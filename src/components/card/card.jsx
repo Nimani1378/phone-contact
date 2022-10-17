@@ -2,7 +2,11 @@ import "../../components/components_style.css";
 import "../card/card_style.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ contact, handleDelete,handleToggleFav }) => {
+
+const Card = ({ contact,toggleFavorite1,deleteContact1 }) => {
+    
+    //const contact = useSelector((state) => state.contact_key[index])
+    //console.log(contact[]);
     return (
         <div className="card">
             <div className="container_left">
@@ -12,14 +16,14 @@ const Card = ({ contact, handleDelete,handleToggleFav }) => {
                 <div>{contact.name} {contact.lastName}</div>
             </div>
             <div className="container_right">
-                <span onClick={()=>handleToggleFav(contact.id)} style={{cursor:"pointer",color: contact.favorite==="favorite"?'red':'black'}} class="material-symbols-outlined">
+                <span onClick={toggleFavorite1} style={{ cursor: "pointer", color: contact.favorite === "favorite" ? 'red' : 'black' }} class="material-symbols-outlined">
                     favorite
                 </span>
-                <span style={{cursor:"pointer"}} onClick={() => handleDelete(contact.id)} class="material-symbols-outlined">
+                <span style={{ cursor: "pointer" }} onClick={deleteContact1} class="material-symbols-outlined">
                     delete
                 </span>
                 <Link to={`/contact/${contact.id}`} >
-                    <span style={{color:'black'}} class="material-symbols-outlined">
+                    <span style={{ color: 'black' }} class="material-symbols-outlined">
                         info
                     </span>
                 </Link>
