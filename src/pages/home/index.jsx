@@ -39,6 +39,9 @@ function Home() {
           ))}
         </div>
         <div className='list_options'>
+
+        </div>
+        <div class="navbar" id="myNavbar">
           <div>
             <span>
               <input onChange={handleSearch} value={searchBox} placeholder={'SEARCH'} style={{ border: 'none', borderRadius: "10px", padding: "8px", fontSize: "10px" }} />
@@ -49,12 +52,6 @@ function Home() {
               person_add
             </span>
           </Link>
-        </div>
-        <div class="navbar" id="myNavbar">
-          <a href="#home">Home</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
         </div>
       </div>
 
