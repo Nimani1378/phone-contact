@@ -13,7 +13,7 @@ const Card = ({ contact,toggleFavorite1,deleteContact1 }) => {
                 <div style={{ width: '50px', height: '50px' }}>
                     <img alt='avatar' src={`https://joeschmoe.io/api/v1/${contact.id}`}></img>
                 </div>
-                <div>{contact.name} {contact.lastName}</div>
+                <p className="contact_name">{contact.name} {contact.lastName}</p>
             </div>
             <div className="container_right">
                 <span onClick={toggleFavorite1} style={{ cursor: "pointer", color: contact.favorite === "favorite" ? 'red' : 'black' }} class="material-symbols-outlined">
