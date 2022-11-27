@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import React, { useState } from "react";
 import '../../total.css'
 import './addContact_style.css'
@@ -9,6 +9,7 @@ import { addContact} from '../../redux/contact.slice'
 const Add_contact = () => {
   //const contacts = useSelector((state) => state.contact_key);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const key_array = ['name', 'lastName', 'age', 'city'];
   const [form, setForm] = useState({
     id: Math.floor(Math.random() * 1000),
@@ -21,7 +22,7 @@ const Add_contact = () => {
   })
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addContact(form))
+    dispatch(addContact(form));
     setForm({
       id: Math.floor(Math.random() * 1000),
       name: '',
@@ -30,7 +31,8 @@ const Add_contact = () => {
       lastName: '',
       favorite: 'unFavorite',
       city: ''
-    })
+    });
+    navigate('/')
   }
   const handleForm = e => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -54,7 +56,7 @@ const Add_contact = () => {
         </span>
             <span>FAVORITE</span>
           </div>
-          <button className="fav_but" type={'submit'}>
+          <button className="fav_but" type={'submit'} >
             Submit
           </button>
         </form>
