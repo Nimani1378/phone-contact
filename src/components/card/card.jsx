@@ -11,7 +11,7 @@ const Card = ({ contact,toggleFavorite1,deleteContact1 }) => {
         <div className="card">
             <div className="container_left">
                 <div style={{ width: '50px', height: '50px' }}>
-                    <img alt='avatar' src={`https://avatars.dicebear.com/api/avataaars/:${contact.id}.svg`}></img>
+                    <img alt='avatar' src={`https://joeschmoe.io/api/v1/${contact.id}`}></img>
                 </div>
                 <div>{contact.name} {contact.lastName}</div>
             </div>

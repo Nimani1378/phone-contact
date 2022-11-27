@@ -19,8 +19,8 @@ const initialState = [{
 },
 {
   id: 3,
-  name: 'nima',
-  lastName: 'rezaei',
+  name: 'ali',
+  lastName: 'khodaBandeh',
   age: 21,
   city: 'tehran',
   email: 'rezaei@example.com',
@@ -28,8 +28,8 @@ const initialState = [{
 },
 {
   id: 4,
-  name: 'nima',
-  lastName: 'rezaei',
+  name: 'elham',
+  lastName: 'ahmadi',
   age: 21,
   city: 'tehran',
   email: 'rezaei@example.com',
