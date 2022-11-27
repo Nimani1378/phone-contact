@@ -15,7 +15,7 @@ const Single_contact = () => {
         <div className="body">
             <div className="SingleContact_container">
                 <div className="SingleContact_image">
-                    <img alt='avatar' src={`https://avatars.dicebear.com/api/avataaars/:${contact.id}.svg`}></img>
+                <img alt='avatar' src={`https://joeschmoe.io/api/v1/${contact.id}`}></img>
                 </div>
                 <div className="row">
                     <span className="title">NAME</span>

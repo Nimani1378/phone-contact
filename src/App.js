@@ -58,20 +58,6 @@ function App() {
       path: "/contact/:contactID",
       element: <Single_contact contacts={contacts}/>,
     },
-    // {
-    //   path: "/",
-    //   element: <Layout2 />,
-    //   children: [
-    //     {
-    //       path: "login",
-    //       element: <Login />,
-    //     },
-    //     {
-    //       path: "register",
-    //       element: <Register />,
-    //     },
-    //   ],
-    // },
   ]);
   return <RouterProvider router={router} />;
 }

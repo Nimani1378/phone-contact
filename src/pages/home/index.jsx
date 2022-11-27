@@ -35,7 +35,7 @@ function Home() {
         </div>
         <div className='cards_container'>
           {contacts.filter(filter_contacts => filter_contacts.name.toUpperCase().includes(searchBox.toUpperCase()) && (fav_filter === 'allContacts' ? true : filter_contacts.favorite === fav_filter)).map(contact => (
-            <Card contact={contact} toggleFavorite1={()=>dispatch(toggleFavorite(contact.id))} deleteContact1={()=>dispatch(deleteContact(contact.id))}/>
+            <Card contact={contact} toggleFavorite1={() => dispatch(toggleFavorite(contact.id))} deleteContact1={() => dispatch(deleteContact(contact.id))} />
           ))}
         </div>
         <div className='list_options'>
@@ -44,11 +44,17 @@ function Home() {
               <input onChange={handleSearch} value={searchBox} placeholder={'SEARCH'} style={{ border: 'none', borderRadius: "10px", padding: "8px", fontSize: "10px" }} />
             </span>
           </div>
-            <Link to={"/addContact"}>
-              <span style={{ color: 'white', padding: '15px' }} class="material-symbols-outlined">
-                person_add
-              </span>
-            </Link>
+          <Link to={"/addContact"}>
+            <span style={{ color: 'white', padding: '15px' }} class="material-symbols-outlined">
+              person_add
+            </span>
+          </Link>
+        </div>
+        <div class="navbar" id="myNavbar">
+          <a href="#home">Home</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
         </div>
       </div>
 

@@ -34,7 +34,44 @@ const initialState = [{
   city: 'tehran',
   email: 'rezaei@example.com',
   favorite: 'unFavorite'
-},];
+},
+{
+  id: 2,
+  name: 'nima',
+  lastName: 'rezaei',
+  age: 21,
+  city: 'tehran',
+  email: 'rezaei@example.com',
+  favorite: 'unFavorite'
+},
+{
+  id: 2,
+  name: 'nima',
+  lastName: 'rezaei',
+  age: 21,
+  city: 'tehran',
+  email: 'rezaei@example.com',
+  favorite: 'unFavorite'
+},
+{
+  id: 2,
+  name: 'nima',
+  lastName: 'rezaei',
+  age: 21,
+  city: 'tehran',
+  email: 'rezaei@example.com',
+  favorite: 'unFavorite'
+},
+{
+  id: 2,
+  name: 'nima',
+  lastName: 'rezaei',
+  age: 21,
+  city: 'tehran',
+  email: 'rezaei@example.com',
+  favorite: 'unFavorite'
+},
+];
 
 export const contactSlice = createSlice({
   name: 'contacts',
